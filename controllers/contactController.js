@@ -16,6 +16,19 @@ const getContact = (req, res) => {
 //@routs POST /api/contacts/
 //@access public
 const createContact = (req, res) => {
+  //printing the request body
+  console.log("The request body is : ", req.body);
+  
+  //destructuring the request body sent from the client side
+  const {name, email, phone} = req.body;
+
+  //validating the name,email and phone and displaying the error message
+  if(!name || !email || !phone){
+    res.status(400);
+    throw new Error("All fields are mandatory");
+  }
+
+  
   res.status(201).json({ message: "Create contact" });
 };
 
