@@ -60,7 +60,7 @@ const updateContact = asyncHandler(async (req, res) => {
 
   const updatedContact = await Contact.findByIdAndUpdate(
     req.params.id, //getting the id of the contact that needs to be updated
-    req.body, //getting the updated body
+    req.body, //getting the updated body 
     { new: true } //query option
   );
 
@@ -73,14 +73,14 @@ const updateContact = asyncHandler(async (req, res) => {
 //@access public
 const deleteContact = asyncHandler(async (req, res) => {
   const contact = await Contact.findById(req.params.id);
-  if(!contact) {
+  if (!contact) {
     res.status(404);
     throw new Error("Contact not found");
   }
 
-  //check this line
-  await Contact.delete();
-  res.status(200).json(contact); 
+  //deleting the contact that has the provided id
+  await Contact.deleteOne({ _id: req.params.id });
+  res.status(200).json(contact);
 });
 
 module.exports = {
