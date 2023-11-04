@@ -15,7 +15,7 @@ const contactSchema = mongoose.Schema({
         required: [true, "Plase add the contact phone number"]
     }
 },{
-    timestamp: true
+    timestamps : true
 }
 );
 

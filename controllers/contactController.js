@@ -1,10 +1,13 @@
 const asyncHandler = require("express-async-handler");
+const Contact = require("../models/contactModel");
 
 //@desc Get all contacts
 //@routs GET /api/contacts
 //@access public
 const getContacts = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Get all contacts" });
+  //getting the contacts from the db
+  const contacts = await Contact.find();
+  res.status(200).json(contacts);
 });
 
 //@desc Get contact by id
@@ -30,7 +33,12 @@ const createContact = asyncHandler(async (req, res) => {
     throw new Error("All fields are mandatory");
   }
 
-  res.status(201).json({ message: "Create contact" });
+  const contact = await Contact.create({
+    name, //equls to request.body.name. in es6 key and value is same we can use key
+    email,
+    phone
+  });
+  res.status(201).json(contact);
 });
 
 //@desc Put all contacts
