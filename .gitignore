@@ -1,3 +1,3 @@
 # These thing will be ignored in git repository
-/node_modules
-.env
+# /node_modules
+# .env
