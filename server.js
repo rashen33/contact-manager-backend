@@ -1,8 +1,11 @@
 //creating a express server
 const express = require("express");
 const errorHandler = require("./middleware/errorHandler");
+const connectDb = require("./config/dbConnection");
 //allows to fetch the values in .env with the help of process module
 const dotenv = require("dotenv").config();
+
+connectDb();
 
 const app = express();
 
