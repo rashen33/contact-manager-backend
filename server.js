@@ -19,6 +19,9 @@ app.use(express.json());
 //first has the common route then it checks the routs folder and contactRoutes.js file
 app.use("/api/contacts", require("./routes/contactRoutes"));
 
+//end point for registration
+app.use("/api/users", require("./routes/userRoutes"));
+
 //middlewerar used to convert the html error message to json format
 app.use(errorHandler);
 
