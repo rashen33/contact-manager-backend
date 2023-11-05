@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
 
-  //checking weather the fileds are empty
+  //checking weather the fileds are empty 
   if (!username || !email || !password) {
     res.status(400);
     throw new Error("All fields are mandatory!"); 
@@ -51,7 +51,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 //@desc Login a user
-//@routs POST /api/users/login
+// @routs GET /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
   //taking the email and password from the body
@@ -93,7 +93,7 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 //@desc Current user info
-//@routs POST /api/users/current
+//@routs GET /api/users/current
 //@access private
 const currentUser = asyncHandler(async (req, res) => {
   res.json({ message: "Current user" });
