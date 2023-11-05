@@ -18,7 +18,10 @@ const validateToken =  asyncHandler(async(req,res,next) => {
             }
 
             //if the user is autherized
+            //take the info of the user and storing it in req.user
             req.user = decoded.user;
+            console.log(req.user);
+            //append in the request body
             next();
         });
 

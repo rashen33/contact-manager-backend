@@ -81,15 +81,12 @@ const loginUser = asyncHandler(async (req, res) => {
       //experation date
       { expiresIn: "15m" }
     );
-    console.log(process.env.ACCESS_TOKEN_SECRET);
+    // console.log(process.env.ACCESS_TOKEN_SECRET);
     res.status(200).json({ accessTocken });
   } else {
     res.status(401);
     throw new Error("email or password is not valid");
   }
-
-  res.json({ message: "Current user" });
-
 });
 
 //@desc Current user info
